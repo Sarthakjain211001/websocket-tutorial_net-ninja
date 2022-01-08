@@ -15,3 +15,19 @@ But if we go to localhost:5000 on chrome we will get "cannot get/" because we ar
 
 7. npm i socket.io
 8. No we will have to setup socket.io on server as well as on frontend
+9. Setting socket on server : 
+    In index.js - i.)  require('socket.io') 
+                  ii.) io = socket(server)  //passing the server which we created because we want socket to work on this server.
+                  iii.) io.on('connection', function(socket){      //listening for an event. i.e When the fronted will connect to the server this will run.
+                           console.log('made socket connection')
+                        })               
+
+10. Setting socket on the frontend: 
+    In public/index.html - i.) <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script> 
+                           ii.) <script src="chat.js"></script>
+    
+    Create chat.js and in it write : const socket = io.connect("http://localhost:5000");  //For making a connection with the server. iii point in 9. will listen to this event and will print made socket connection in console
+
+11.  In 9.iii ..function(socket)..    //Here socket is an object containing lots of properties.
+                                      //id is one of the properties of socket. Every time we refresh the page or run the url in browser we get a new 
+                                      //connection . i.e. we get a new socket.id each time . 

@@ -14,5 +14,5 @@ app.use(express.static('public'));   //This will serve index.html file from the 
 var io = socket(server)  //server because we want socket.io to work on this server which we created above.
 
 io.on('connection', function(socket){      //listening for an event
-    console.log('made socket connection')
+    console.log('made socket connection', socket.id)
 })               
