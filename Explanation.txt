@@ -54,5 +54,20 @@ video -4 :
      socket.on('chat', function(data){   //When a message is sent form a client to the server. When the message comes from a client then the server will take the message
         io.sockets.emit('chat', data);  //and will emit that message to all the sockets(i.e all the clients) connected to the server.
      })
-    })               
+    })  
 
+14. video-5 : 
+  Broadcasting message : Message which shows that "sonu is typing". 
+                         We have to send this message from server to all the clients except the one who is typing
+                         These type of messages are called Broadcasting message.
+  
+  Add key press eventListener to the message input because when someone will be typing then only isTyping will be shown.
+
+
+*** In chat.js write the code for sending the messages to the server and for handling the messages coming form the server 
+                                   ( socket.emit() )                                                  ( socket.on() )
+    
+    In index.js write the code for handling the messages coming from the frontend ****                                   
+                                      ( socket.on() )
+
+socket in chat.js is different from the socket in index.js                                      
