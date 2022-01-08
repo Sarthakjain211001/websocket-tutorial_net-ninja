@@ -4,8 +4,9 @@ Websocket Tutorial (Net Ninja 5videos)
 2. npm i express 
 3. npm i nodemon 
 4. create index.js 
+  In index.js: 
     i.) require express because we are creating a express app 
-Now when we will do nodemon index in console we will get "App listening on port 5000" . i.e our app is running
+Now when we will do nodemon index in terminal we will get "App listening on port 5000" . i.e our app is running
 But if we go to localhost:5000 on chrome we will get "cannot get/" because we are not serving anything to show on the browser.
 
 5. So no we will use some middleware to serve some static or public files
