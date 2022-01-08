@@ -30,4 +30,29 @@ But if we go to localhost:5000 on chrome we will get "cannot get/" because we ar
 
 11.  In 9.iii ..function(socket)..    //Here socket is an object containing lots of properties.
                                       //id is one of the properties of socket. Every time we refresh the page or run the url in browser we get a new 
-                                      //connection . i.e. we get a new socket.id each time . 
+                                      //connection(socket) . i.e. we get a new socket.id each time . 
+
+video -4 : 
+12. create the frontend for the chat app in index.html 
+
+     In chat.js grab the data written by the client in the input boxes. 
+     Add click eventListener to the send button to send this data to the server via the socket created between client and the server.
+ 
+     btn.addEventListener('click', function(){  //listening to the send button 
+       socket.emit('chat', {                  //grab the socket between this client and the server and emit the message and send it to the server
+         message: message.value, 
+         handle: handle.value
+       });
+     });
+
+13. In index.js where we were listening to the event; there write the code for what to do when the server recieves a message from a client. 
+    The server will send out this message to all the sockets connected to it.
+
+    io.on('connection', function(socket){      //listening for an event
+    console.log('made socket connection', socket.id) 
+
+     socket.on('chat', function(data){   //When a message is sent form a client to the server. When the message comes from a client then the server will take the message
+        io.sockets.emit('chat', data);  //and will emit that message to all the sockets(i.e all the clients) connected to the server.
+     })
+    })               
+
